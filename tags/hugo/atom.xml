@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bruce Willis on The Sifar Maverick Site</title><link>https://askeijaz.github.io/sidra/tags/hugo/</link><description>Recent content in Bruce Willis on The Sifar Maverick Site</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 13 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://askeijaz.github.io/sidra/tags/hugo/atom.xml" rel="self" type="application/rss+xml"/><item><title>Using Dart Sass in Hugo</title><link>https://askeijaz.github.io/sidra/posts/hugo_dart_sass_setup/</link><pubDate>Sun, 13 Jul 2025 00:00:00 +0000</pubDate><guid>https://askeijaz.github.io/sidra/posts/hugo_dart_sass_setup/</guid><description>&lt;h1 id="-using-dart-sass-in-hugo-extended-version-with-scss-modules">💡 Using Dart Sass in Hugo (Extended Version) with SCSS Modules&lt;/h1>
+&lt;p>This guide walks through how to &lt;strong>fully switch to Dart Sass&lt;/strong> for styling in a Hugo static site. This removes all dependency on deprecated LibSass and uses the recommended Dart Sass SCSS module system (&lt;code>@use&lt;/code>, &lt;code>@forward&lt;/code>).&lt;/p>
+&lt;h2 id="-prerequisites">✅ Prerequisites&lt;/h2>
+&lt;ul>
+&lt;li>Hugo &lt;strong>Extended version&lt;/strong> (&lt;code>brew install hugo&lt;/code>)&lt;/li>
+&lt;li>Dart Sass installed (&lt;code>brew install sass/sass/sass&lt;/code>)&lt;/li>
+&lt;li>A proper SCSS folder structure under &lt;code>/assets/scss/&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="-project-structure">🗂️ Project Structure&lt;/h2>
+&lt;pre tabindex="0">&lt;code>assets/
+└── scss/
+ ├── base/
+ │ ├── _variables.scss
+ │ ├── _typography.scss
+ │ ├── _reset.scss
+ │ └── _utilities.scss
+ ├── components/
+ │ ├── _navbar.scss
+ │ ├── _footer.scss
+ │ ├── _cards.scss
+ │ └── _hero.scss
+ ├── layout/
+ │ └── _grid.scss
+ ├── themes/
+ │ ├── _darkmode.scss
+ │ └── _maverick.scss
+ └── styles.scss
+&lt;/code>&lt;/pre>&lt;hr>
+&lt;h2 id="-stylesscss-entry-point">📄 styles.scss (Entry Point)&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-scss" data-lang="scss">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">@use&lt;/span> &lt;span style="color:#d88200">&amp;#34;scss/base/variables&amp;#34;&lt;/span> &lt;span style="color:#00a8c8">as&lt;/span> &lt;span style="color:#111">*&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">@use&lt;/span> &lt;span style="color:#d88200">&amp;#34;scss/base/reset&amp;#34;&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">@use&lt;/span> &lt;span style="color:#d88200">&amp;#34;scss/base/typography&amp;#34;&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">@use&lt;/span> &lt;span style="color:#d88200">&amp;#34;scss/base/utilities&amp;#34;&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">@use&lt;/span> &lt;span style="color:#d88200">&amp;#34;scss/layout/grid&amp;#34;&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">@use&lt;/span> &lt;span style="color:#d88200">&amp;#34;scss/components/navbar&amp;#34;&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">@use&lt;/span> &lt;span style="color:#d88200">&amp;#34;scss/components/footer&amp;#34;&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">@use&lt;/span> &lt;span style="color:#d88200">&amp;#34;scss/components/cards&amp;#34;&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">@use&lt;/span> &lt;span style="color:#d88200">&amp;#34;scss/components/hero&amp;#34;&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">@use&lt;/span> &lt;span style="color:#d88200">&amp;#34;scss/themes/darkmode&amp;#34;&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">@use&lt;/span> &lt;span style="color:#d88200">&amp;#34;scss/themes/maverick&amp;#34;&lt;/span>&lt;span style="color:#111">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="-using-dart-sass-in-hugo-layoutspartialsheadhtml">🧠 Using Dart Sass in Hugo (layouts/partials/head.html)&lt;/h2>
+&lt;pre tabindex="0">&lt;code class="language-gohtml" data-lang="gohtml">{{ $options := dict &amp;#34;transpiler&amp;#34; &amp;#34;dartsass&amp;#34; &amp;#34;targetPath&amp;#34; &amp;#34;css/main.css&amp;#34; &amp;#34;outputStyle&amp;#34; &amp;#34;compressed&amp;#34; }}
+{{ $styles := resources.Get &amp;#34;scss/styles.scss&amp;#34; | toCSS $options | fingerprint }}
+&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;{{ $styles.RelPermalink }}&amp;#34; integrity=&amp;#34;{{ $styles.Data.Integrity }}&amp;#34;&amp;gt;
+&lt;/code>&lt;/pre>&lt;blockquote>
+&lt;p>💡 This inline option &lt;strong>forces Hugo to use Dart Sass&lt;/strong> even if LibSass is still linked internally.&lt;/p></description></item><item><title>Install Hugo on Mac OS</title><link>https://askeijaz.github.io/sidra/posts/install-hugo-on-mac-os/</link><pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate><guid>https://askeijaz.github.io/sidra/posts/install-hugo-on-mac-os/</guid><description>&lt;p>Vivamus posuere arcu interdum felis venenatis congue. Etiam dapibus condimentum lorem id dignissim. Morbi pulvinar erat quis arcu ornare faucibus. Nulla commodo est id ante porttitor gravida. Sed elementum ante eget turpis consectetur, vitae rutrum ligula eleifend. Fusce iaculis placerat sem, non condimentum odio hendrerit ac. Sed vestibulum neque pellentesque, dapibus tortor et, scelerisque quam. Aenean imperdiet eros quis vestibulum ullamcorper. Integer vestibulum mattis elit, non congue lacus porttitor condimentum. Donec dapibus eleifend nibh, eget tempus justo pulvinar ut. Vivamus eu risus sed orci blandit varius luctus et ex. Mauris tempor dapibus aliquam.&lt;/p></description></item><item><title>Example Content</title><link>https://askeijaz.github.io/sidra/posts/example-content/</link><pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate><guid>https://askeijaz.github.io/sidra/posts/example-content/</guid><description>&lt;p>Nam a malesuada neque. Vivamus dui lorem, semper id nulla ut, ullamcorper lacinia erat. Cras pulvinar aliquet tellus et blandit. Fusce ac maximus lectus. Fusce porttitor, metus non mattis tristique, urna nisi aliquet leo, cursus pulvinar justo nulla vel tellus. Sed et elementum lorem. Sed quis lacus arcu. Pellentesque at dapibus urna. Nullam at ligula euismod, pellentesque enim vitae, molestie dolor. Nulla pharetra nulla eget arcu dapibus rhoncus. Sed dictum consequat lectus, ac sollicitudin ante venenatis ut. Nam vitae aliquet lorem. Vivamus eleifend magna vel vehicula lobortis. Donec ut lorem ac massa vulputate egestas id eget nibh. Proin lacinia odio sed urna luctus ultrices.&lt;/p></description></item></channel></rss>
