@@ -1,0 +1,85 @@
+// Dark Mode Toggle
+.dark-mode-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    background: var(--color-neutral-200);
+    transform: scale(1.05);
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform var(--transition-normal);
+  }
+
+  &[data-theme="dark"] svg {
+    transform: rotate(180deg);
+  }
+}
+
+// Dark mode transitions
+* {
+  transition: background-color var(--transition-normal), 
+              color var(--transition-normal), 
+              border-color var(--transition-normal);
+}
+
+// Dark mode specific styles
+[data-theme="dark"] {
+  .hero {
+    background: linear-gradient(135deg, var(--color-neutral-800) 0%, var(--color-neutral-900) 100%);
+  }
+
+  .card {
+    background: var(--color-neutral-800);
+    border-color: var(--color-neutral-700);
+  }
+
+  .navbar {
+    background: rgba(23, 23, 23, 0.95);
+    backdrop-filter: blur(10px);
+  }
+
+  code {
+    background: var(--color-neutral-800);
+    color: var(--color-neutral-200);
+  }
+
+  pre {
+    background: var(--color-neutral-800);
+    border-color: var(--color-neutral-700);
+  }
+
+  blockquote {
+    border-left-color: var(--color-primary-500);
+    background: var(--color-neutral-800);
+  }
+}
+
+// System preference detection
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-bg: var(--color-neutral-900);
+    --color-bg-secondary: var(--color-neutral-800);
+    --color-text: var(--color-neutral-100);
+    --color-text-secondary: var(--color-neutral-300);
+    --color-border: var(--color-neutral-700);
+  }
+}

@@ -1,0 +1,218 @@
+baseURL = "https://askeijaz.github.io/sidra/"
+languageCode = "en-us"
+title = "The Sifar Maverick Site"
+theme = "maverick"
+
+# Performance optimizations
+enableRobotsTXT = true
+enableGitInfo = true
+enableEmoji = true
+hasCJKLanguage = false
+
+# Build settings
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+canonifyURLs = true
+relativeURLs = false
+
+# Minification
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  minifyOutput = true
+  [minify.tdewolff]
+    [minify.tdewolff.css]
+      keepCSS2 = true
+      precision = 0
+    [minify.tdewolff.html]
+      keepComments = false
+      keepConditionalComments = true
+      keepDefaultAttrVals = true
+      keepDocumentTags = true
+      keepEndTags = true
+      keepQuotes = false
+      keepWhitespace = false
+    [minify.tdewolff.js]
+      keepVarNames = false
+      precision = 0
+    [minify.tdewolff.json]
+      precision = 0
+    [minify.tdewolff.svg]
+      precision = 0
+    [minify.tdewolff.xml]
+      keepWhitespace = false
+
+# Image processing
+[imaging]
+  resampleFilter = "CatmullRom"
+  quality = 85
+  anchor = "smart"
+
+# Caching
+[caches]
+  [caches.getjson]
+    dir = ":cacheDir/:project"
+    maxAge = "10m"
+  [caches.getcsv]
+    dir = ":cacheDir/:project"
+    maxAge = "10m"
+  [caches.images]
+    dir = ":resourceDir/_gen"
+    maxAge = "720h"
+  [caches.assets]
+    dir = ":resourceDir/_gen"
+    maxAge = "720h"
+
+# Markup settings
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.parser]
+      autoHeadingID = true
+      autoHeadingIDType = "github"
+    [markup.goldmark.extensions]
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+  [markup.highlight]
+    style = "github"
+    lineNos = true
+    lineNumbersInTable = false
+    tabWidth = 2
+    codeFences = true
+    guessSyntax = true
+
+# Site parameters
+[params]
+  author = "Eijaz Sheikh"
+  description = "A modern Hugo site by Eijaz powered by Maverick theme"
+  keywords = ["blog", "hugo", "static site", "web development", "technology"]
+  
+  # SEO
+  enableSEO = true
+  enableOpenGraph = true
+  enableTwitterCards = true
+  enableSchemaMarkup = true
+  
+  # Performance
+  enableLazyLoading = true
+  enableWebP = true
+  enableCriticalCSS = true
+  
+  # Features
+  enableDarkMode = true
+  enableSearch = true
+  enableComments = true
+  enableAnalytics = false
+  enablePWA = true
+  
+  # Social links
+  [params.social]
+    github = "https://github.com/askeijaz"
+    twitter = "https://twitter.com/eijazsheikh"
+    linkedin = "https://linkedin.com/in/eijazsheikh"
+    email = "eijaz@example.com"
+  
+  # Comments (using Utterances)
+  [params.comments]
+    enable = true
+    provider = "utterances"
+    [params.comments.utterances]
+      repo = "askeijaz/sidra"
+      issueTerm = "pathname"
+      theme = "github-light"
+      crossorigin = "anonymous"
+
+# Menu configuration
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 20
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 30
+  [[menu.main]]
+    name = "Books"
+    url = "/books/"
+    weight = 40
+  [[menu.main]]
+    name = "Courses"
+    url = "/courses/"
+    weight = 50
+  [[menu.main]]
+    name = "Store"
+    url = "/store/"
+    weight = 60
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 70
+
+# Taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
+
+# Privacy settings
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.googleAnalytics]
+    disable = true
+  [privacy.instagram]
+    disable = true
+  [privacy.twitter]
+    disable = false
+    enableDNT = true
+    simple = true
+  [privacy.vimeo]
+    disable = true
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = true
+
+# Security settings
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+    osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']
+  [security.http]
+    methods = ['(?i)GET|POST']
+    urls = ['.*']
+
+# Output formats
+[outputs]
+  home = ["HTML", "RSS", "JSON", "WebAppManifest"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
+
+# Media types
+[mediaTypes]
+  [mediaTypes."application/manifest+json"]
+    suffixes = ["webmanifest"]
+
+# Output formats
+[outputFormats]
+  [outputFormats.WebAppManifest]
+    mediaType = "application/manifest+json"
+    rel = "manifest"

@@ -1,0 +1,22 @@
+{
+  "name": "sidra-maverick-site",
+  "version": "2.0.0",
+  "description": "Modern Hugo site with advanced features",
+  "scripts": {
+    "dev": "hugo server --disableFastRender --navigateToChanged",
+    "build": "hugo --minify --gc",
+    "preview": "hugo server --environment production",
+    "clean": "rm -rf public resources",
+    "lighthouse": "lighthouse http://localhost:1313 --output html --output-path ./lighthouse-report.html",
+    "optimize-images": "imagemin 'static/images/**/*.{jpg,png}' --out-dir=static/images/optimized --plugin=imagemin-mozjpeg --plugin=imagemin-pngquant"
+  },
+  "devDependencies": {
+    "lighthouse": "^11.4.0",
+    "imagemin": "^8.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2"
+  },
+  "keywords": ["hugo", "blog", "static-site", "responsive", "modern"],
+  "author": "Eijaz Sheikh",
+  "license": "MIT"
+}
