@@ -1,0 +1,44 @@
+<div class="search-modal" id="search-modal" role="dialog" aria-labelledby="search-title" aria-hidden="true">
+    <div class="search-modal-overlay" data-search-close></div>
+    <div class="search-modal-content">
+        <div class="search-modal-header">
+            <h2 id="search-title" class="search-modal-title">Search</h2>
+            <button class="search-modal-close" aria-label="Close search" data-search-close>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="search-modal-body">
+            <div class="search-input-container">
+                <input type="text" class="search-input" placeholder="Search posts, pages..." id="search-input" autocomplete="off">
+                <svg class="search-input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </div>
+            
+            <div class="search-results" id="search-results">
+                <div class="search-empty">
+                    <p>Start typing to search...</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="search-modal-footer">
+            <div class="search-shortcuts">
+                <span class="search-shortcut">
+                    <kbd>↑</kbd><kbd>↓</kbd> to navigate
+                </span>
+                <span class="search-shortcut">
+                    <kbd>↵</kbd> to select
+                </span>
+                <span class="search-shortcut">
+                    <kbd>esc</kbd> to close
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

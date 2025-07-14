@@ -1,0 +1,56 @@
+{{ define "main" }}
+<div class="offline-page">
+    <div class="container">
+        <div class="offline-content">
+            <div class="offline-icon">
+                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+            </div>
+            <h1 class="offline-title">You're Offline</h1>
+            <p class="offline-description">
+                It looks like you're not connected to the internet. 
+                Please check your connection and try again.
+            </p>
+            <button class="btn btn-primary" onclick="window.location.reload()">
+                Try Again
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+.offline-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.offline-content {
+    max-width: 500px;
+    padding: var(--space-8);
+}
+
+.offline-icon {
+    margin-bottom: var(--space-6);
+    color: var(--color-neutral-400);
+}
+
+.offline-title {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-4);
+    color: var(--color-text);
+}
+
+.offline-description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+    line-height: var(--line-height-relaxed);
+}
+</style>
+{{ end }}

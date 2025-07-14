@@ -1,0 +1,130 @@
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-content animate-fade-in">
+            <h1 class="hero-title">{{ .Site.Params.hero.title | default "Welcome to The Sifar Maverick Site" }}</h1>
+            <p class="hero-description">{{ .Site.Params.hero.description | default "A modern Hugo site with cutting-edge features and beautiful design" }}</p>
+            <div class="hero-actions">
+                <a href="/posts/" class="btn btn-primary">Explore Posts</a>
+                <a href="/about/" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image animate-slide-in-right">
+            <img src="{{ .Site.Params.hero.image | default "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800" }}" 
+                 alt="Hero image" 
+                 loading="eager"
+                 width="600" 
+                 height="400">
+        </div>
+    </div>
+</section>
+
+<!-- Featured Posts -->
+<section class="featured-posts">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Featured Posts</h2>
+            <p class="section-description">Discover our latest and most popular content</p>
+        </div>
+        
+        <div class="posts-grid stagger-children">
+            {{ range first 6 (where .Site.RegularPages "Type" "posts") }}
+            <article class="post-card hover-lift">
+                {{ if .Params.image }}
+                <div class="post-card-image">
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy" width="400" height="250">
+                    <div class="post-card-overlay">
+                        <a href="{{ .Permalink }}" class="post-card-link" aria-label="Read {{ .Title }}">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                {{ end }}
+                
+                <div class="post-card-content">
+                    <div class="post-card-meta">
+                        <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">
+                            {{ .Date.Format "January 2, 2006" }}
+                        </time>
+                        {{ if .Params.tags }}
+                        <div class="post-tags">
+                            {{ range first 2 .Params.tags }}
+                            <span class="post-tag">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                    
+                    <h3 class="post-card-title">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h3>
+                    
+                    <p class="post-card-excerpt">{{ .Summary | truncate 120 }}</p>
+                    
+                    <div class="post-card-footer">
+                        <div class="post-author">
+                            {{ if .Params.author }}
+                            <span class="author-name">{{ .Params.author }}</span>
+                            {{ end }}
+                        </div>
+                        <div class="post-reading-time">
+                            {{ .ReadingTime }} min read
+                        </div>
+                    </div>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+        
+        <div class="section-footer">
+            <a href="/posts/" class="btn btn-outline">View All Posts</a>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="categories-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Explore Categories</h2>
+            <p class="section-description">Browse content by topic</p>
+        </div>
+        
+        <div class="categories-grid">
+            {{ range .Site.Taxonomies.categories }}
+            <div class="category-card hover-scale">
+                <div class="category-icon">
+                    {{ partial "icons/category.html" .Page.Title }}
+                </div>
+                <h3 class="category-title">
+                    <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+                </h3>
+                <p class="category-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</p>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section">
+    <div class="container">
+        <div class="newsletter-content">
+            <div class="newsletter-text">
+                <h2 class="newsletter-title">Stay in the Loop</h2>
+                <p class="newsletter-description">Get the latest posts and updates delivered directly to your inbox.</p>
+            </div>
+            <form class="newsletter-form" action="#" method="post">
+                <div class="newsletter-input-group">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </div>
+                <p class="newsletter-privacy">We respect your privacy. Unsubscribe at any time.</p>
+            </form>
+        </div>
+    </div>
+</section>
+{{ end }}
